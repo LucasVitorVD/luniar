@@ -1,0 +1,61 @@
+```mermaid
+flowchart TD
+    %% ===== FLUXO DO USUÁRIO =====
+    subgraph Usuario["👤 Usuário"]
+        A[Informa uma obra<br/>ex: Persona 5] --> B[Tela de resultado<br/>Trilha de 4-5 itens]
+        B --> C[Clique em um item<br/>abre detalhe]
+        C --> D[Marca como concluído<br/>feedback]
+        D --> E[Trilha salva no histórico<br/>conta do usuário]
+    end
+
+    %% ===== FLUXO DA API =====
+    subgraph API["🔧 API Luniar"]
+        B --> F[Recebe nome da obra]
+        F --> G[Busca obra em fontes reais<br/>ex: IGDB, TMDb, OpenLibrary]
+        G --> H[Obra encontrada?]
+        H -->|Não| I[Retorna erro/sugestão<br/>de obras similares]
+        H -->|Sim| J[Consulta grafo de influências<br/>nós e arestas]
+        J --> K[Gera trilha curta<br/>4-5 itens, 1 por tipo]
+        K --> L[Verifica materiais reais<br/>evita alucinação de IA]
+        L --> M[Material existe?]
+        M -->|Não| N[Descarta item, busca<br/>alternativa do mesmo tipo]
+        N --> K
+        M -->|Sim| O[Ordena leve → médio → denso]
+        O --> P[Retorna trilha com<br/>por que está aqui + nível]
+        P --> B
+    end
+
+    %% ===== GRAFO =====
+    subgraph Grafo["🕸️ Grafo de Influências"]
+        Q[Obra: Persona 5]
+        R[Tema: psicologia]
+        S[Conceito: persona]
+        T[Autor: Carl Jung]
+        U[Material: O Homem e Seus Símbolos]
+        
+        Q -->|inspirou| T
+        Q -->|trata_do_tema| R
+        Q -->|trata_do_tema| S
+        Q -->|referencia| U
+        U -->|aprofunda| R
+        U -->|aprofunda| S
+    end
+
+    %% ===== DETALHE DO ITEM =====
+    subgraph Detalhe["📄 Detalhe do Item"]
+        C --> V[Capa, autor, ano,<br/>sinopse curta, nível]
+        V --> W[Por que entrou na trilha]
+        V --> X[Onde encontrar<br/>link de afiliado opcional]
+    end
+
+    %% ===== ESTILIZAÇÃO =====
+    classDef usuario fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef api fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef grafo fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef detalhe fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+
+    class A,B,C,D,E usuario
+    class F,G,H,I,J,K,L,M,N,O,P api
+    class Q,R,S,T,U grafo
+    class V,W,X detalhe
+```

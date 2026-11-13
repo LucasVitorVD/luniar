@@ -1,0 +1,127 @@
+{
+  "nos": [
+    { "id": "obra-1", "tipo": "obra", "nome": "Persona 5", "ano": 2016, "tipo_midia": "jogo" },
+    { "id": "obra-2", "tipo": "obra", "nome": "Kingdom Hearts", "ano": 2002, "tipo_midia": "jogo" },
+    { "id": "obra-3", "tipo": "obra", "nome": "Neon Genesis Evangelion", "ano": 1995, "tipo_midia": "anime" },
+    { "id": "obra-4", "tipo": "obra", "nome": "O Nome do Vento", "ano": 2007, "tipo_midia": "livro" },
+    { "id": "obra-5", "tipo": "obra", "nome": "Interestelar", "ano": 2014, "tipo_midia": "filme" },
+    { "id": "obra-6", "tipo": "obra", "nome": "The Last of Us", "ano": 2013, "tipo_midia": "jogo" },
+    { "id": "obra-7", "tipo": "obra", "nome": "1984", "ano": 1949, "tipo_midia": "livro" },
+    { "id": "obra-8", "tipo": "obra", "nome": "Breaking Bad", "ano": 2008, "tipo_midia": "serie" },
+    { "id": "obra-9", "tipo": "obra", "nome": "Berserk", "ano": 1989, "tipo_midia": "manga" },
+    { "id": "obra-10", "tipo": "obra", "nome": "Soulsborne (Dark Souls)", "ano": 2011, "tipo_midia": "jogo" },
+    { "id": "obra-11", "tipo": "obra", "nome": "Matrix", "ano": 1999, "tipo_midia": "filme" },
+    { "id": "obra-12", "tipo": "obra", "nome": "Cemitério Maldito", "ano": 1983, "tipo_midia": "livro" },
+    { "id": "obra-13", "tipo": "obra", "nome": "Bem-vindos à NHK", "ano": 2002, "tipo_midia": "anime" },
+    { "id": "obra-14", "tipo": "obra", "nome": "O Senhor dos Anéis", "ano": 1954, "tipo_midia": "livro" },
+    { "id": "obra-15", "tipo": "obra", "nome": "Zelda: Ocarina of Time", "ano": 1998, "tipo_midia": "jogo" },
+
+    { "id": "tema-1", "tipo": "tema", "nome": "cognição", "descricao": "Como pensamos, percebemos e processamos informação" },
+    { "id": "tema-2", "tipo": "tema", "nome": "conexões", "descricao": "Vínculos emocionais e interpessoais" },
+    { "id": "tema-3", "tipo": "tema", "nome": "psicologia", "descricao": "Estudo da mente e do comportamento" },
+    { "id": "tema-4", "tipo": "tema", "nome": "existencialismo", "descricao": "Sentido da existência e liberdade individual" },
+    { "id": "tema-5", "tipo": "tema", "nome": "luto", "descricao": "Processo de perder e seguir adiante" },
+    { "id": "tema-6", "tipo": "tema", "nome": "isolamento", "descricao": "Solidão e descolamento social" },
+    { "id": "tema-7", "tipo": "tema", "nome": "herói", "descricao": "Jornada do herói e arquétipos" },
+
+    { "id": "conceito-1", "tipo": "conceito", "nome": "persona", "descricao": "Máscara social que usamos perante o mundo" },
+    { "id": "conceito-2", "tipo": "conceito", "nome": "sombra", "descricao": "Partes reprimidas da psique" },
+    { "id": "conceito-3", "tipo": "conceito", "nome": "anima/animus", "descricao": "Aspectos contrários ao gênero consciente" },
+    { "id": "conceito-4", "tipo": "conceito", "nome": "individuação", "descricao": "Processo de tornar-se um todo integrado" },
+
+    { "id": "autor-1", "tipo": "autor", "nome": "Carl Jung", "area": "psicologia" },
+    { "id": "autor-2", "tipo": "autor", "nome": "Joseph Campbell", "area": "mitologia comparada" },
+    { "id": "autor-3", "tipo": "autor", "nome": "Friedrich Nietzsche", "area": "filosofia" },
+    { "id": "autor-4", "tipo": "autor", "nome": "George R.R. Martin", "area": "literatura" },
+    { "id": "autor-5", "tipo": "autor", "nome": "Tetsuya Nomura", "area": "game design" },
+
+    { "id": "material-1", "tipo": "material", "nome": "O Homem e Seus Símbolos", "ano": 1964, "tipo": "livro", "autor": "Carl Jung", "nivel": "denso" },
+    { "id": "material-2", "tipo": "material", "nome": "Mapas da Significação", "ano": 1999, "tipo": "livro", "autor": "Jordan Peterson", "nivel": "denso" },
+    { "id": "material-3", "tipo": "material", "nome": "A Arte da Guerra", "ano": -500, "tipo": "livro", "autor": "Sun Tzu", "nivel": "medio" },
+    { "id": "material-4", "tipo": "material", "nome": "Sapiens", "ano": 2011, "tipo": "livro", "autor": "Yuval Noah Harari", "nivel": "medio" },
+    { "id": "material-5", "tipo": "material", "nome": "O Poder do Hábito", "ano": 2012, "tipo": "livro", "autor": "Charles Duhigg", "nivel": "leve" },
+    { "id": "material-6", "tipo": "material", "nome": "Man's Search for Meaning", "ano": 1946, "tipo": "livro", "autor": "Viktor Frankl", "nivel": "medio" },
+    { "id": "material-7", "tipo": "material", "nome": "Psicologia das Massas", "ano": 1921, "tipo": "livro", "autor": "Carl Jung", "nivel": "denso" },
+    { "id": "material-8", "tipo": "material", "nome": "Herói de Mil Faces", "ano": 1949, "tipo": "livro", "autor": "Joseph Campbell", "nivel": "medio" },
+    { "id": "material-9", "tipo": "material", "nome": "Além do Bem e do Mal", "ano": 1886, "tipo": "livro", "autor": "Friedrich Nietzsche", "nivel": "denso" },
+    { "id": "material-10", "tipo": "material", "nome": "Introdução à Psicologia", "ano": 2020, "tipo": "documentario", "autor": "Vários", "nivel": "leve" },
+    { "id": "material-11", "tipo": "material", "nome": "O Cérebro e o Mundo", "ano": 2018, "tipo": "documentario", "autor": "Vários", "nivel": "medio" },
+    { "id": "material-12", "tipo": "material", "nome": "Mitologia Mundial", "ano": 2015, "tipo": "documentario", "autor": "Vários", "nivel": "leve" },
+    { "id": "material-13", "tipo": "material", "nome": "Arte e Psique", "ano": 2010, "tipo": "artigo", "autor": "Vários", "nivel": "leve" },
+    { "id": "material-14", "tipo": "material", "nome": "Shadow Work", "ano": 2019, "tipo": "artigo", "autor": "Vários", "nivel": "medio" },
+    { "id": "material-15", "tipo": "material", "nome": "Filosofia do Jogo", "ano": 2021, "tipo": "artigo", "autor": "Vários", "nivel": "leve" }
+  ],
+  "arestas": [
+    { "de": "obra-1", "para": "autor-5", "tipo": "desenvolvido_por" },
+    { "de": "obra-1", "para": "conceito-1", "tipo": "trata_do_tema" },
+    { "de": "obra-1", "para": "conceito-2", "tipo": "trata_do_tema" },
+    { "de": "obra-1", "para": "tema-3", "tipo": "trata_do_tema" },
+    { "de": "obra-1", "para": "autor-1", "tipo": "inspirou" },
+    { "de": "obra-1", "para": "material-1", "tipo": "referencia" },
+
+    { "de": "obra-2", "para": "autor-5", "tipo": "desenvolvido_por" },
+    { "de": "obra-2", "para": "tema-2", "tipo": "trata_do_tema" },
+    { "de": "obra-2", "para": "conceito-3", "tipo": "trata_do_tema" },
+    { "de": "obra-2", "para": "tema-7", "tipo": "trata_do_tema" },
+    { "de": "obra-2", "para": "autor-2", "tipo": "inspirou" },
+    { "de": "obra-2", "para": "material-8", "tipo": "referencia" },
+    { "de": "obra-2", "para": "obra-9", "tipo": "dialoga_com" },
+
+    { "de": "obra-3", "para": "tema-4", "tipo": "trata_do_tema" },
+    { "de": "obra-3", "para": "tema-3", "tipo": "trata_do_tema" },
+    { "de": "obra-3", "para": "autor-3", "tipo": "inspirou" },
+    { "de": "obra-3", "para": "material-9", "tipo": "referencia" },
+    { "de": "obra-3", "para": "obra-11", "tipo": "dialoga_com" },
+
+    { "de": "obra-4", "para": "tema-7", "tipo": "trata_do_tema" },
+    { "de": "obra-4", "para": "autor-2", "tipo": "inspirou" },
+    { "de": "obra-4", "para": "material-8", "tipo": "referencia" },
+
+    { "de": "obra-5", "para": "tema-4", "tipo": "trata_do_tema" },
+    { "de": "obra-5", "para": "material-6", "tipo": "referencia" },
+
+    { "de": "obra-6", "para": "tema-5", "tipo": "trata_do_tema" },
+    { "de": "obra-6", "para": "tema-2", "tipo": "trata_do_tema" },
+    { "de": "obra-6", "para": "material-5", "tipo": "referencia" },
+
+    { "de": "obra-7", "para": "tema-4", "tipo": "trata_do_tema" },
+    { "de": "obra-7", "para": "material-10", "tipo": "referencia" },
+
+    { "de": "obra-8", "para": "tema-5", "tipo": "trata_do_tema" },
+    { "de": "obra-8", "para": "conceito-2", "tipo": "trata_do_tema" },
+
+    { "de": "obra-9", "para": "tema-4", "tipo": "trata_do_tema" },
+    { "de": "obra-9", "para": "conceito-2", "tipo": "trata_do_tema" },
+    { "de": "obra-9", "para": "material-9", "tipo": "referencia" },
+
+    { "de": "obra-10", "para": "tema-6", "tipo": "trata_do_tema" },
+    { "de": "obra-10", "para": "tema-3", "tipo": "trata_do_tema" },
+
+    { "de": "obra-11", "para": "tema-4", "tipo": "trata_do_tema" },
+    { "de": "obra-11", "para": "conceito-1", "tipo": "trata_do_tema" },
+    { "de": "obra-11", "para": "material-10", "tipo": "referencia" },
+
+    { "de": "obra-12", "para": "tema-5", "tipo": "trata_do_tema" },
+    { "de": "obra-12", "para": "conceito-2", "tipo": "trata_do_tema" },
+
+    { "de": "obra-13", "para": "tema-6", "tipo": "trata_do_tema" },
+    { "de": "obra-13", "para": "tema-3", "tipo": "trata_do_tema" },
+    { "de": "obra-13", "para": "material-13", "tipo": "referencia" },
+
+    { "de": "obra-14", "para": "tema-7", "tipo": "trata_do_tema" },
+    { "de": "obra-14", "para": "autor-2", "tipo": "inspirou" },
+    { "de": "obra-14", "para": "material-8", "tipo": "referencia" },
+    { "de": "obra-14", "para": "obra-15", "tipo": "dialoga_com" },
+
+    { "de": "obra-15", "para": "tema-7", "tipo": "trata_do_tema" },
+
+    { "de": "material-1", "para": "conceito-1", "tipo": "aprofunda" },
+    { "de": "material-1", "para": "conceito-2", "tipo": "aprofunda" },
+    { "de": "material-1", "para": "tema-3", "tipo": "aprofunda" },
+    { "de": "material-8", "para": "tema-7", "tipo": "aprofunda" },
+    { "de": "material-8", "para": "conceito-3", "tipo": "aprofunda" },
+    { "de": "material-10", "para": "tema-3", "tipo": "aprofunda" },
+    { "de": "material-13", "para": "tema-6", "tipo": "aprofunda" },
+    { "de": "material-15", "para": "tema-4", "tipo": "aprofunda" }
+  ]
+}
