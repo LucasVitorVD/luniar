@@ -1,13 +1,13 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { ExternalSourcesService } from './external-sources.service.js';
 import { SearchWorkDTO } from './dto/search-work.dto.js';
 
-@Controller('external-sources/api/v1')
+@Controller('/api/v1/external-sources')
 export class ExternalSourcesController {
   constructor(private readonly externalSourcesService: ExternalSourcesService) {}
 
   @Get("/search")
-  async searchWorks(@Param("q") { query }: SearchWorkDTO) {
-    return this.externalSourcesService.searchWorks(query)
+  async searchWorks(@Query() queryDto: SearchWorkDTO) {
+    return this.externalSourcesService.searchWorks(queryDto.query)
   }
 }
