@@ -5,6 +5,8 @@ import { AppService } from './app.service.js';
 import { WorksModule } from './works/works.module.js';
 import { DataSource } from 'typeorm';
 import { typeormConfig } from './config/typeorm.config.js';
+import { ExternalSourcesService } from './external-sources/external-sources.service.js';
+import { ExternalSourcesModule } from './external-sources/external-sources.module.js';
 
 @Module({
   imports: [
@@ -13,6 +15,7 @@ import { typeormConfig } from './config/typeorm.config.js';
       autoLoadEntities: true
     }),
     WorksModule,
+    ExternalSourcesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

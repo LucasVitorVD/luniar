@@ -10,5 +10,9 @@ export class WorksService {
     private workRepository: Repository<Work>
   ) {}
 
-  
+  async searchForWork(workQuery: string) {
+    // 1 - procurar obras em api externas como TMDB
+    // 2 - retornar resultados que cheguem perto da pesquisa
+
+  }
 }
