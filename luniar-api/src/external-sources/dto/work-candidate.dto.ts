@@ -1,45 +1,50 @@
 import { Transform } from "class-transformer";
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString, IsOptional } from "class-validator";
+
+export type MediaType = "movie" | "tv" | "game"
 
 export class WorkCandidateDTO {
   @IsNotEmpty()
-  private id: unknown
+  readonly id: string | number
 
   @IsString()
   @IsNotEmpty()
-  @Transform(({ value }) => value.trim())
-  private title: string
+  @Transform(({ value }) => (typeof value === "string" ? value.trim() : String(value).trim()))
+  readonly title: string
 
   @IsString()
   @IsNotEmpty()
-  @Transform(({ value }) => value.trim())
-  private mediaType: string
+  @Transform(({ value }) => (typeof value === "string" ? value.trim() : String(value).trim()))
+  readonly mediaType: MediaType
 
   @IsString()
-  @Transform(({ value }) => typeof value != "string" ? String(value).trim() : value.trim())
-  private year: string
+  @IsOptional()
+  @Transform(({ value }) => (typeof value === "string" ? value.trim() : String(value).trim()))
+  readonly year?: string
 
   @IsString()
-  @Transform(({ value }) => value.trim())
-  private coverUrl: string
+  @IsOptional()
+  @Transform(({ value }) => (typeof value === "string" ? value.trim() : String(value).trim()))
+  readonly coverUrl?: string
 
   @IsString()
-  @Transform(({ value }) => value.trim())
-  private source: string
+  @IsNotEmpty()
+  @Transform(({ value }) => (typeof value === "string" ? value.trim() : String(value).trim()))
+  readonly source: string
 
   constructor(
-    id: unknown,
+    id: string | number,
     title: string,
-    mediaType: string, 
-    year: string, 
-    coverUrl: string,
-    source: string
+    mediaType: MediaType,
+    year?: string,
+    coverUrl?: string,
+    source: string = "TMDB"
   ) {
-    this.id = id,
-    this.title = title,
-    this.mediaType = mediaType,
-    this.year = year,
-    this.coverUrl = coverUrl,
+    this.id = id
+    this.title = title
+    this.mediaType = mediaType
+    this.year = year
+    this.coverUrl = coverUrl
     this.source = source
   }
 }

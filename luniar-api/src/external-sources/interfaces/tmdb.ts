@@ -17,6 +17,7 @@ export interface Result {
   popularity: number
   poster_path?: string
   release_date?: string
+  first_air_date?: string
   softcore?: boolean
   video?: boolean
   vote_average?: number
