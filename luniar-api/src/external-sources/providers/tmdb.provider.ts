@@ -1,6 +1,6 @@
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { BaseProvider } from "./base.provider.js";
-import { WorkCandidateDTO } from "../dto/work-candidate.dto.js";
+import { MediaType, WorkCandidateDTO } from "../dto/work-candidate.dto.js";
 import { WorkDetailsDTO } from "../dto/work-details.dto.js";
 import { TmdbResponse } from "../interfaces/tmdb.js";
 import { TmdbWorkDetails } from "../interfaces/tmdb-work-details.js";
@@ -8,7 +8,7 @@ import { HttpClient, InjectHttpClient } from "@nestjs/http-client";
 
 @Injectable()
 export class TmdbProvider implements BaseProvider {
-  constructor(@InjectHttpClient('tmdb') private readonly tmdbClient: HttpClient) {}
+  constructor(@InjectHttpClient('tmdb') private readonly tmdbClient: HttpClient) { }
 
   async search(query: string): Promise<WorkCandidateDTO[]> {
     const { data, status, ok } = await this.tmdbClient.get<TmdbResponse>(
@@ -32,17 +32,19 @@ export class TmdbProvider implements BaseProvider {
     }
 
     return data.results
-      .filter((result) => result.media_type !== "person")
-      .map((result) => {
-        const title = result.title ?? result.name ?? "Título não disponível";
-        const year = result.release_date ?? result.first_air_date ?? undefined;
-        const coverPath = result.poster_path ?? result.backdrop_path ?? undefined;
+      .filter((r) => r.media_type === "movie" || r.media_type === 'tv')
+      .map((r) => {
+        const title = r.title ?? r.name ?? "Título não disponível";
+        const year = r.release_date ?? r.first_air_date ?? undefined;
+        const coverPath = r.poster_path ?? r.backdrop_path ?? undefined;
         const coverUrl = coverPath ? `${process.env.TMDB_IMAGE_BASE_URL}${coverPath}` : undefined;
+        const externalId = `${r.media_type}:${r.id}`
+        const mediaType = r.media_type as MediaType
 
         return new WorkCandidateDTO(
-          result.id,
+          externalId,
           title,
-          result.media_type,
+          mediaType,
           year,
           coverUrl,
           "TMDB"
@@ -51,49 +53,22 @@ export class TmdbProvider implements BaseProvider {
   }
 
   async getDetails(externalId: string): Promise<WorkDetailsDTO> {
-    let result: any = null;
-    let mediaType: string | undefined;
+    const { mediaType, id } = this.parseExternalId(externalId);
 
-    try {
-      const { data, ok } = await this.tmdbClient.get<TmdbWorkDetails>(
-        `${process.env.TMDB_API_URL}/multi/${externalId}`,
-        {
-          query: { language: 'pt-BR' },
-        },
-      );
-      if (ok && data) {
-        result = data;
-        mediaType = data.media_type;
-      }
-    } catch {
-      // Ignora erro do /multi e tenta endpoints específicos abaixo
+    const { data: result, ok, status } = await this.tmdbClient.get<TmdbWorkDetails>(
+      `${process.env.TMDB_API_URL}/${mediaType}/${id}`,
+      { query: { language: 'pt-BR' } },
+    );
+
+    if (status === 404) {
+      throw new NotFoundException(`Work ${externalId} not found in TMDB`);
     }
 
-    if (!result) {
-      for (const endpoint of ['movie', 'tv']) {
-        try {
-          const { data, ok } = await this.tmdbClient.get<TmdbWorkDetails>(
-            `${process.env.TMDB_API_URL}/${endpoint}/${externalId}`,
-            {
-              query: { language: 'pt-BR' },
-            },
-          );
-          if (ok && data) {
-            result = data;
-            mediaType = endpoint;
-            break;
-          }
-        } catch {
-          continue;
-        }
-      }
+    if (!ok || !result) {
+      throw new Error(`TMDB details failed with status: ${status}`);
     }
 
-    if (!result) {
-      throw new NotFoundException(`Work with ID ${externalId} not found in TMDB`);
-    }
-
-    const title = result.title ?? result.name ?? "Título não disponível";
+    const title = result.title ?? result.name ?? 'Título não disponível';
     const overview = result.overview ?? undefined;
     const year = result.release_date ?? result.first_air_date ?? undefined;
     const coverPath = result.poster_path ?? result.backdrop_path ?? undefined;
@@ -102,14 +77,25 @@ export class TmdbProvider implements BaseProvider {
     const backdropUrl = backdropPath ? `${process.env.TMDB_IMAGE_BASE_URL}${backdropPath}` : undefined;
 
     return new WorkDetailsDTO(
-      result.id.toString(),
-      "TMDB",
+      externalId,
+      'TMDB',
       title,
       overview,
       coverUrl,
       backdropUrl,
       year,
-      undefined
     );
+  }
+
+  private parseExternalId(externalId: string) {
+    const [mediaType, id] = externalId.split(':');
+
+    if ((mediaType !== 'movie' && mediaType !== 'tv') || !id) {
+      throw new BadRequestException(
+        `Invalid externalId "${externalId}". Expected "movie:<id>" or "tv:<id>"`,
+      );
+    }
+
+    return { mediaType, id };
   }
 }

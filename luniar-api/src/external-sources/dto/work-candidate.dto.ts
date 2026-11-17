@@ -1,11 +1,11 @@
 import { Transform } from "class-transformer";
 import { IsNotEmpty, IsString, IsOptional } from "class-validator";
 
-export type MediaType = "movie" | "tv" | "game"
+export type MediaType = 'movie' | 'tv' | 'game';
 
 export class WorkCandidateDTO {
   @IsNotEmpty()
-  readonly id: string | number
+  readonly id: string
 
   @IsString()
   @IsNotEmpty()
@@ -33,7 +33,7 @@ export class WorkCandidateDTO {
   readonly source: string
 
   constructor(
-    id: string | number,
+    id: string,
     title: string,
     mediaType: MediaType,
     year?: string,
